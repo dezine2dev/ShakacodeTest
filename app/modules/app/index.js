@@ -33,13 +33,13 @@ class App extends Component {
     return (
       <div className="main-app">
         <Container className="app-container">
+          {currentUser.get('role')}
           {this[`${currentUser.get('role')}Routes`]()}
         </Container>
       </div>
     );
   }
 }
-
 
 const mapStateToProps = createStructuredSelector({
   currentUser: makeSelectCurrentUser(),
