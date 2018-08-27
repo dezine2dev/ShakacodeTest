@@ -20,6 +20,14 @@ function create(req, res, next) {
     .catch(next);
 }
 
+function list(req, res, next) {
+  User.find()
+    .then((users) => {
+      res.json(users);
+    })
+    .catch(next);
+}
+
 function update(req, res, next) {
   Object.assign(req.userModel, {
     firstName: req.body.firstName,
@@ -85,6 +93,7 @@ module.exports = {
   create,
   update,
   read,
+  list,
   remove,
   getUserByID,
   getProfile,
