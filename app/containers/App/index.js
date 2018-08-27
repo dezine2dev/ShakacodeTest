@@ -28,7 +28,7 @@ class RootApp extends Component {
       <div className="app">
         <Helmet
           titleTemplate="%s - Shakacode Test"
-          defaultTitle="Shakecode Test"
+          defaultTitle="Shakacode Test"
         >
           <meta name="description" content="Shakacode Text React.js/ Redux" />
         </Helmet>

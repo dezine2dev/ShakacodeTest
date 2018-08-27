@@ -24,6 +24,17 @@ userSchema.methods.hashPassword = function hashPassword(password) {
   });
 };
 
+userSchema.methods.authenticate = function authenticate(password) {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, this.password)
+      .then((allow) => {
+        if (!allow) return reject();
+        return resolve();
+      })
+      .catch(reject);
+  });
+};
+
 userSchema.pre('save', function preSave(next) {
   if (this.password && this.isModified('password')) {
     this.password = this.hashPassword(this.password)

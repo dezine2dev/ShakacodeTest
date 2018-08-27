@@ -6,6 +6,8 @@ import { Container } from 'semantic-ui-react';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectCurrentUser } from 'containers/App/redux/selectors';
 import Dashboard from './dashboard';
+import TopBar from './layout/components/TopBar';
+import Notification from 'containers/Notification';
 
 import './style.scss';
 
@@ -32,8 +34,9 @@ class App extends Component {
     const { currentUser } = this.props;
     return (
       <div className="main-app">
+        <TopBar />
+        <Notification />
         <Container className="app-container">
-          {currentUser.get('role')}
           {this[`${currentUser.get('role')}Routes`]()}
         </Container>
       </div>
